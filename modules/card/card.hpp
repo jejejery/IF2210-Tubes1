@@ -6,42 +6,73 @@ using namespace std;
 
 class GameCard{
     public:
-        // constructor
+        // default constructor
         GameCard();
+
+        // user-defined constructor
+        GameCard(int, string);
 
         // destructor
         ~GameCard();
 
         // getter
-        int get_number();
-        char get_color();
+        int getNumber();
+        string getColor();
 
         // setter
-        void set_number(int);
-        void set_color(char);
+        void setNumber(int);
+        void setColor(string);
 
     private:
-        vector<int> number;
-        vector<char> color;
+        int number;
+        string color;
 
+};
+
+class Deck{
+    public:
+        // default constructor
+        Deck();
+
+        // user-defined constructor
+        Deck(int);
+
+        // destructor
+        ~Deck();
+
+        // method
+        void shuffleDeck();
+
+        GameCard drawCard();
+
+    private:
+        const int deckSize;
+        vector<GameCard> cards;
 };
 
 class AbilityCard{
     public:
-        // constructor
+        // default constructor
         AbilityCard();
+
+        // user-defined constructor
+        AbilityCard(vector<string>);
 
         // destructor
         ~AbilityCard();
 
         // getter
-        int get_ability();
+        string getAbility();
 
         // setter
-        void set_ability(int);
+        void setAbilities(vector<string>);
+
+        // shuffle
+        void shuffleAbilities();
 
     private:
-        vector<int> ability;
+        string ability;
+        vector<string> abilities;
 };
 
 
