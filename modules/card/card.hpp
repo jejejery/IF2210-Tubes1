@@ -4,45 +4,87 @@
 #include <vector>
 using namespace std;
 
-class GameCard{
+class Card{
+   public:
+   Card();
+   ~Card();
+   virtual int value() const;
+};
+
+class GameCard : public Card{
+    private:
+        int number;
+        string color;
+
     public:
         // constructor
-        GameCard();
+        GameCard(int,string);
 
         // destructor
         ~GameCard();
 
         // getter
-        int get_number();
-        char get_color();
+        int get_number() const;
+        string get_color() const;
 
         // setter
         void set_number(int);
-        void set_color(char);
+        void set_color(string);
 
-    private:
-        vector<int> number;
-        vector<char> color;
+
+        friend ostream& operator<<(ostream& os, const GameCard& gc);
+
+        //SPEK TUBES
+        int value() const;
 
 };
 
-class AbilityCard{
+class AbilityCard : public Card{
+    private:
+        string ability;
+
     public:
         // constructor
-        AbilityCard();
+        AbilityCard(string);
 
         // destructor
         ~AbilityCard();
 
         // getter
-        int get_ability();
+        string get_ability();
 
         // setter
-        void set_ability(int);
+        void set_ability(string);
 
-    private:
-        vector<int> ability;
+
+        //SPEK TUBES
+        int value() const;
+
+        //debug
+        friend ostream& operator<<(ostream&, AbilityCard&);
+        
 };
 
+class CombinationCard : public GameCard {
+    private:
+        vector<GameCard*> player_cards;
+        vector<GameCard*> table_cards;
+        int value;
+        int constant;
+        string type;
+    public:
+        // function to get the value and set type
+        void setValue(int);
+        void setType(string);
+
+        // return int value of the highest combination
+        int getHighestCombination();
+
+        // return double constant of the highest combination 
+        double getHighestCombiType();
+
+        // to compare 
+        CombinationCard compare();
+};
 
 #endif
