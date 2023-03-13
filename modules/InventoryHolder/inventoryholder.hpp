@@ -21,7 +21,7 @@ class InventoryHolder{
     ~InventoryHolder(); //dtor
 
     vector<GameCard*> get_buffer();
-    virtual uint8_t get_num_of_cards() = 0;
+    virtual uint8_t get_num_of_cards() const = 0;
 
 };
 

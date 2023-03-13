@@ -4,6 +4,10 @@
 #include "../inventoryholder.hpp"
 
 class TableCard : public InventoryHolder{
+
+    protected: 
+    int idx;
+
     public:
     TableCard(); //ctor
     ~TableCard(); //dtor

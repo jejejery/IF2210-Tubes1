@@ -38,10 +38,13 @@ class GameCard : public Card{
 
         //Operator assignment
         GameCard& operator=(const GameCard&);
-
+        bool operator>(const GameCard&);
+        bool operator<(const GameCard&);
+        bool operator==(const GameCard&);
         friend ostream& operator<<(ostream& os, const GameCard& gc);
 
         //SPEK TUBES
+        float card_weight() const; // Menghitung value high card
         int value() const;
 
 };
@@ -69,6 +72,7 @@ class AbilityCard : public Card{
         //Operator Assignment
         AbilityCard& operator=(const AbilityCard&);
 
+        
         //SPEK TUBES
         int value() const;
 

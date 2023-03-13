@@ -39,6 +39,13 @@ class myQueue{
         this->theQueue.erase(this->theQueue.begin());
     };
 
+    void requeue(){ // Memindahkan elemen pertama ke elemen 
+    //BEFORE: p1 p2 p3 p4 p5 p6 p7
+    //AFTER: p2 p3 p4 p5 p6 p7 p1
+        this->enqueue(this->front());
+        this->dequeue;
+    }
+
     //Advanced queue operation
     void reverse(){
         stack<T> Stack;

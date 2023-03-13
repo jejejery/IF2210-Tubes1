@@ -20,10 +20,16 @@ class Deck{
         // method
         void shuffleDeck();
 
-        GameCard drawCard();
+        //Getter,setter
+        int deckSize() const;
+
+        GameCard* drawCard();
+
+
+
+        void debug();
 
     private:
-        const int deckSize;
         vector<GameCard*> cards;
 };
 

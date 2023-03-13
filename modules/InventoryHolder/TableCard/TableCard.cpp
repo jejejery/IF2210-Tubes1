@@ -1,7 +1,13 @@
 #include "TableCard.hpp"
-    TableCard::TableCard(){}; //ctor
-    TableCard::~TableCard(){}; //dtor
+#include <vector>
+
+TableCard::TableCard():InventoryHolder(5){
+    this->idx = 0;
+}; //ctor
+TableCard::~TableCard(){}; //dtor
     
-    void TableCard::addCard(const GameCard* gc){
-        
-    };
+void TableCard::addCard(GameCard* gc){
+    // if(this->idx >= 4) throw fulltablecardexception;  //TO BE IMPLEMENTED!
+    cardbuffer[idx] = gc;
+    idx++;
+};

@@ -9,7 +9,9 @@ using namespace std;
 ==========================CARD==========================
 */
 Card::Card(){};
-Card::~Card(){};
+Card::~Card(){
+    // cout << "Card deleted" << endl;
+};
 int Card::value() const{return 0xDEAD;}
 
 /*
@@ -27,7 +29,9 @@ GameCard::GameCard(int num, string col) : Card(){
 }
 
 // destructor
-GameCard::~GameCard(){}
+GameCard::~GameCard(){
+    // cout << "GameCard " << this->get_color() << this->get_number() << " deleted" << endl;
+}
 // getter
 int GameCard::get_number() const{
     return this->card_identity.first;
@@ -48,9 +52,30 @@ ostream& operator<<(ostream& os,const GameCard& gc) {
           return os; 
     }
 
+bool GameCard::operator>(const GameCard& gc){
+    return this->card_weight() > gc.card_weight();
+}
+
+bool GameCard::operator<(const GameCard& gc){
+    return this->card_weight() < gc.card_weight();
+}
+
+bool GameCard::operator==(const GameCard& gc){
+    return this->card_weight() == gc.card_weight();
+}
+
+float GameCard::card_weight() const{
+    if(this->get_color() == "Hijau") return (float)this->get_number()/10;
+    else if(this->get_color() == "Biru") return (float)this->get_number()/10 + 0.03;
+    else if(this->get_color() == "Kuning") return (float)this->get_number()/10 + 0.06;
+    else if(this->get_color() == "Merah") return (float)this->get_number()/10 + 0.09;
+    else return -1;
+}
+
 int GameCard::value() const{
     return 0xBEEF;
 }
+
 
 /*
 ==========================ABILITY CARD==========================
@@ -64,7 +89,9 @@ AbilityCard::AbilityCard(string ab):Card(){
     this->ability = ab;
 }
 // destructor
-AbilityCard::~AbilityCard(){}
+AbilityCard::~AbilityCard(){
+    // cout << "AbilityCard deleted" << endl;
+}
 // getter
 string AbilityCard::get_ability(){
     return this->ability;

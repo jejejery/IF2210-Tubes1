@@ -3,7 +3,8 @@
 InventoryHolder::InventoryHolder():num_of_cards(0){}; //ctor
 
 InventoryHolder::InventoryHolder(uint8_t num):num_of_cards(num){
-    cardbuffer.assign(num_of_cards, new GameCard());
+    cardbuffer.resize(num);
+    for(int i = 0; i < num; i++) cardbuffer[i] = new GameCard();
 }; //param ctor
 
 InventoryHolder::~InventoryHolder(){

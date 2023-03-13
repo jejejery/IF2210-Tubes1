@@ -7,6 +7,7 @@ using namespace std;
 
 Player::Player():InventoryHolder(2){
     this->player_ID = 0;
+    this->theAbilityCard = new AbilityCard();
     this->AbilityState = false;
     this->the_score = 0;
     this->action_name = "NONE";
@@ -14,6 +15,7 @@ Player::Player():InventoryHolder(2){
 
 Player::Player(uint16_t ID):InventoryHolder(2){
     this->player_ID = ID;
+    this->theAbilityCard = new AbilityCard();
     this->AbilityState = false;
     this->the_score = 0;
     this->action_name = "NONE";
@@ -27,17 +29,17 @@ Player::Player(const Player& p){
     this->action_name = p.action_name;
 }; //cctor
 Player::~Player(){
-    delete [] this->theAbilityCard;
+    delete  this->theAbilityCard;
 }; //dtor
 
 //GETTER, SETTER
-uint8_t Player::get_player_ID(){
+uint8_t Player::get_player_ID() const{
     return this->player_ID;
 };
 
-uint8_t Player::get_num_of_cards(){
+uint8_t Player::get_num_of_cards() const {
     return this->num_of_cards;
-};
+}
 AbilityCard* Player::get_theAbilityCard(){
     return this->theAbilityCard;
 };
@@ -55,8 +57,8 @@ string Player::get_action_name(){
 void Player::setAbilityState(bool b){
     this->AbilityState = b;
 };
-void Player::setAbility(AbilityCard ac){
-    this->theAbilityCard = &ac;
+void Player::setAbility(AbilityCard* ac){
+    this->theAbilityCard = ac;
 };
 void Player::setScore(uint64_t sc){
     this->the_score = sc;
@@ -73,6 +75,6 @@ void Player::debug(){
     cout << "ID Player: " << this->player_ID << endl;
     cout << "Kartu Pertama: " << *(this->cardbuffer[0]) << endl;
     cout << "Kartu Kedua: " << *(this->cardbuffer[1]) << endl;
-    // cout << "Ability Card: " << *(this->theAbilityCard) << endl;
+    cout << "Ability Card: " << *(this->theAbilityCard) << endl;
     cout << "Aksi: " << this->action_name << endl;
 }

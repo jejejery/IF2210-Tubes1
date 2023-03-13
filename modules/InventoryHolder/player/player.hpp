@@ -26,16 +26,16 @@ class Player : public InventoryHolder {
     ~Player(); //dtor
 
     //GETTER, SETTER
-    uint8_t get_num_of_cards();
+    uint8_t get_num_of_cards() const override;
 
-    uint8_t get_player_ID();
+    uint8_t get_player_ID() const;
     AbilityCard* get_theAbilityCard();
     bool getAbilityState();
     uint64_t get_the_score();
     string get_action_name();
     
     void setAbilityState(bool);
-    void setAbility(AbilityCard);
+    void setAbility(AbilityCard*);
     void setScore(uint64_t);
     void set_action_name(string);
 
