@@ -1,20 +1,25 @@
 #define PLAYER_HPP_
 #ifdef PLAYER_HPP_
 
-#include "../card/card.hpp"
+#include "../inventoryholder.hpp"
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-class Player : {
-    // vector<*Card> card_deck;
+class Player : public InventoryHolder {
     private:
-    Player(); //default ctor
+    AbilityCard* theAbilityCard;
+    bool AbilityState;
+    
+
 
     
     
     public:
+    Player(); //default ctor
+    ~Player(); //dtor
+
 
 } ;
 

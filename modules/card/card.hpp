@@ -17,8 +17,11 @@ class GameCard : public Card{
         string color;
 
     public:
-        // constructor
-        GameCard(int,string);
+        // default constructor
+        GameCard();
+
+        // user-defined constructor
+        GameCard(int, string);
 
         // destructor
         ~GameCard();
@@ -39,12 +42,14 @@ class GameCard : public Card{
 
 };
 
+
+
 class AbilityCard : public Card{
     private:
         string ability;
 
     public:
-        // constructor
+        // default constructor
         AbilityCard(string);
 
         // destructor
@@ -64,6 +69,31 @@ class AbilityCard : public Card{
         friend ostream& operator<<(ostream&, AbilityCard&);
         
 };
+
+// class AbilityCard{
+//     public:
+//         // default constructor
+//         AbilityCard();
+
+//         // user-defined constructor
+//         AbilityCard(vector<string>);
+
+//         // destructor
+//         ~AbilityCard();
+
+//         // getter
+//         string getAbility();
+
+//         // setter
+//         void setAbilities(vector<string>);
+
+//         // shuffle
+//         void shuffleAbilities();
+
+//     private:
+//         string ability;
+//         vector<string> abilities;
+// };
 
 class CombinationCard : public GameCard {
     private:

@@ -1,17 +1,16 @@
 #include "card.hpp"
-#include <iostream>
+#include <cstdlib>
+#include <random>
+#include <iterator>
+#include <algorithm>
 using namespace std;
-
 
 /*
 ==========================CARD==========================
 */
-
 Card::Card(){};
 Card::~Card(){};
 int Card::value() const{return 0xDEAD;}
-
-
 
 /*
 ==========================GAME CARD==========================
@@ -45,7 +44,6 @@ ostream& operator<<(ostream& os,const GameCard& gc) {
 int GameCard::value() const{
     return 0xBEEF;
 }
-
 
 /*
 ==========================ABILITY CARD==========================
@@ -97,3 +95,49 @@ double CombinationCard::getHighestCombiType() {
 CombinationCard CombinationCard::compare() {
     
 }
+
+// --------------[ Implementation of Deck ]--------------
+
+// --------------[ Implementation of AbilityCard ]--------------
+// AbilityCard::AbilityCard(){
+//     vector<string> abilities = {"Re-roll", "Quadruple", "Quarter", "Reverse Direction", "Swap Card", "Switch", "Abilityless"};
+//     this->setAbilities(abilities);
+// }
+
+// AbilityCard::AbilityCard(vector<string> abilities)
+// {
+//     this->setAbilities(abilities);
+// }
+
+// AbilityCard::~AbilityCard(){}
+
+// string AbilityCard::getAbility()
+// {
+//     string drawn = abilities.back();
+//     abilities.pop_back();
+//     return drawn;
+// }
+
+// void AbilityCard::setAbilities(vector<string> abilities)
+// {
+//     for (int i = 0; i < abilities.size(); i++){
+//         this->abilities.push_back(abilities[i]);
+//     }
+// }
+
+// void AbilityCard::shuffleAbilities()
+// {
+//     random_device rd;
+//     mt19937 gen(rd());
+//     shuffle(abilities.begin(), abilities.end(), gen);
+// }
+
+
+
+
+
+
+
+
+
+
