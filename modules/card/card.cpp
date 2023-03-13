@@ -17,23 +17,30 @@ int Card::value() const{return 0xDEAD;}
 */
 
 //Constructor
-GameCard::GameCard(int num, string col) : Card(),number(num),color(col){}
+GameCard::GameCard() : Card(){
+    this->card_identity.first = 0;
+    this->card_identity.second = "";
+}
+GameCard::GameCard(int num, string col) : Card(){
+    this->card_identity.first = num;
+    this->card_identity.second = col;
+}
 
 // destructor
 GameCard::~GameCard(){}
 // getter
 int GameCard::get_number() const{
-    return this->number;
+    return this->card_identity.first;
 };
 string GameCard::get_color() const{
-    return this->color;
+    return this->card_identity.second;
 }
 // setter
 void GameCard::set_number(int n){
-    this->number = n;
+    this->card_identity.first = n;
 }
 void GameCard::set_color(string c){
-    this->color = c;
+    this->card_identity.second = c;
 }
 
 ostream& operator<<(ostream& os,const GameCard& gc) {
@@ -50,8 +57,12 @@ int GameCard::value() const{
 */
 
 // constructor
-
-AbilityCard::AbilityCard(string ab):Card(),ability(ab){}
+AbilityCard::AbilityCard():Card(){
+    this->ability = "NONE";
+}
+AbilityCard::AbilityCard(string ab):Card(){
+    this->ability = ab;
+}
 // destructor
 AbilityCard::~AbilityCard(){}
 // getter

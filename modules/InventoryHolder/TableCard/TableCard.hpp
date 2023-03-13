@@ -4,9 +4,13 @@
 #include "../inventoryholder.hpp"
 
 class TableCard : public InventoryHolder{
-    private:
-
     public:
+    TableCard(); //ctor
+    ~TableCard(); //dtor
+    
+    void addCard(const GameCard* gc);
+
+
 
 };
 

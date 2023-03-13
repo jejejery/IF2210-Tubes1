@@ -2,6 +2,7 @@
 #define CARD_HPP_
 #include <iostream>
 #include <vector>
+#include <utility>
 using namespace std;
 
 class Card{
@@ -13,8 +14,9 @@ class Card{
 
 class GameCard : public Card{
     private:
-        int number;
-        string color;
+        // int number;
+        // string color;
+        pair<int,string> card_identity;
 
     public:
         // default constructor
@@ -34,6 +36,8 @@ class GameCard : public Card{
         void set_number(int);
         void set_color(string);
 
+        //Operator assignment
+        GameCard& operator=(const GameCard&);
 
         friend ostream& operator<<(ostream& os, const GameCard& gc);
 
@@ -50,7 +54,8 @@ class AbilityCard : public Card{
 
     public:
         // default constructor
-        AbilityCard(string);
+        AbilityCard(); //no param
+        AbilityCard(string); //param
 
         // destructor
         ~AbilityCard();
@@ -61,6 +66,8 @@ class AbilityCard : public Card{
         // setter
         void set_ability(string);
 
+        //Operator Assignment
+        AbilityCard& operator=(const AbilityCard&);
 
         //SPEK TUBES
         int value() const;

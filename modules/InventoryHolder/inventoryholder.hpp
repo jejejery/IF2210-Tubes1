@@ -2,6 +2,7 @@
 #define INV_HPP_
 
 #include "../card/card.hpp"
+// #include "../card/card.cpp"
 #include <iostream>
 #include <vector>
 
@@ -15,10 +16,11 @@ class InventoryHolder{
 
     public:
 
-    InventoryHolder():num_of_cards(0){}; //ctor
-    ~InventoryHolder(){}; //dtor
+    InventoryHolder(); //ctor
+    InventoryHolder(uint8_t num); //param ctor
+    ~InventoryHolder(); //dtor
 
-    vector<GameCard*> get_buffer(){return this->cardbuffer;}
+    vector<GameCard*> get_buffer();
     virtual uint8_t get_num_of_cards() = 0;
 
 };

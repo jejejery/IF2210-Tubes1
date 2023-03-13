@@ -8,7 +8,6 @@ int main(){
     Card *gc1 = new Card();
     GameCard gc2(131,"Biru");
     cout << hex << gc1->value() << endl;
-    gc1 = &gc2;
     cout << hex << gc1->value() << endl;
     cout << hex << gc2.value() << endl;
     AbilityCard ab1("jem");
