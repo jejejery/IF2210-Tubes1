@@ -11,10 +11,10 @@ GameState::GameState(){
     theDeck = new Deck();
 
     theQueue = new myQueue<int>();
-    for(int i = 0; i < 7; i++) thePlayers.push_back(new Player(i+1));
+    for(int i = 0; i < this->num_of_players; i++) thePlayers.push_back(new Player(i+1));
 
-    for(int i = 1; i <= 7; i++) theQueue->enqueue(i);
-    for(int i = 0; i < 7; i++){
+    for(int i = 1; i <= this->num_of_players; i++) theQueue->enqueue(i);
+    for(int i = 0; i < this->num_of_players; i++){
         for(int k = 0; k < 2; k++) {
             (this->thePlayers[i])->add_card((this->theDeck)->drawCard());
         }
@@ -81,10 +81,19 @@ void GameState::reset_permainan(){
 
     //Pindahin seluruh kartu dari tablecard ke dek
     this->restore_deck();
+
+    for(int i = 1; i <= this->num_of_players; i++){
+        theQueue->enqueue(i);
+    } 
+
+    for(int i = 0; i < this->permainan_ke; i++){
+        theQueue->enqueue(theQueue->front());
+        theQueue->dequeue();
+    }
 }
 
  void GameState::restore_deck(){
-    for(int i= 0; i < 7; i++){
+    for(int i= 0; i < this->num_of_players; i++){
         for(int h = 0; h < 2; h++) (this->theDeck)->addCard((thePlayers[i])->get_ith_card(h));
         (this->thePlayers[i])->empty_cards();
     }
@@ -95,11 +104,16 @@ void GameState::reset_permainan(){
 
     (this->theDeck)->shuffleDeck();
 
-    for(int i = 0; i < 7; i++){
+    for(int i = 0; i < this->num_of_players; i++){
         thePlayers[i]->add_card((this->theDeck)->drawCard());
         thePlayers[i]->add_card((this->theDeck)->drawCard());
     } 
  }
+
+bool GameState::isEndgame() const{
+    bool hehe = false;
+    for(int i = 0; i < this->num_of_players; i++) hehe = hehe || ((this->thePlayers[i])->get_the_score() == this->maxScore);
+}
 
 void GameState::calculate_winner(){}
 
@@ -108,8 +122,8 @@ void GameState::run_game(){}
 
 void GameState::debug(){
     cout << "==================================================" << endl;
-    cout << "\t\t DEBUGGING GAMESTATE\n\n" << endl;
-    cout << "==================================================" << endl;
+    cout << "\t\t DEBUGGING GAMESTATE" << endl;
+    cout << "==================================================\n" << endl;
 
     cout << "THE DECK: " << endl;
     (this->theDeck)->debug();
@@ -117,6 +131,7 @@ void GameState::debug(){
 
     cout << "THE QUEUE: " << endl;
     (this->theQueue)->debugging();
+    cout << endl << endl;
 
     cout << "PLAYERS: " << endl;
     for(int i = 0; i < thePlayers.size(); i++){
@@ -133,7 +148,7 @@ void GameState::debug(){
     cout << "Reward: " << this->reward << endl;
 
     cout << "==================================================" << endl;
-    cout << "\t\tAKHIR DARI DEBUGGING\n\n" << endl;
-    cout << "==================================================" << endl;
+    cout << "\t\tAKHIR DARI DEBUGGING" << endl;
+    cout << "==================================================\n" << endl;
     
 }

@@ -1,5 +1,6 @@
-#define GAMESTATE_HPP_
-#ifdef GAMESTATE_HPP_
+
+#ifndef _GAMESTATE_HPP_
+#define _GAMESTATE_HPP_
 
 #include "../deck/deck.hpp"
 #include "../card/card.hpp"
@@ -7,13 +8,18 @@
 #include "../card/gamecard/gamecard.hpp"
 #include "../InventoryHolder/player/player.hpp"
 #include "../InventoryHolder/TableCard/TableCard.hpp"
-#include "../action/action.hpp"
+
 
 #include "../myqueue/myqueue.hpp"
 
 // #include "../card/gamecard/gamecard.hpp"
 // #include "../card/combinationcard/combinationcard.hpp"
 // #include "../card/abilitycard/abilitycard.hpp"
+
+class Action;
+class Next;
+class Half;
+class Double;
 
 class GameState{
     private:
@@ -27,11 +33,14 @@ class GameState{
     //CombinationCard *theCombination;
     TableCard* theTableCards;
     
+    //Konstanta, aturan game
+    const uint64_t maxScore = (0x1 << 32);
+    const uint16_t num_of_players = 7;
     //friend class
-    // friend class Action;
-    // friend class Double;
-    // friend class Half;
-    // friend class Next;
+    friend class Action;
+    friend class Double;
+    friend class Half;
+    friend class Next;
     // friend class Abilityless;
     // friend class Quadruple;
     // friend class Quarter;
@@ -75,6 +84,8 @@ class GameState{
     void restore_deck();
     void share_cards();
 
+
+    bool isEndgame() const;
     void calculate_winner();
     void run_game();
 

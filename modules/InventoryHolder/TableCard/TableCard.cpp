@@ -8,7 +8,7 @@ TableCard::~TableCard(){}; //dtor
     
 void TableCard::addCard(GameCard* gc){
     // if(this->capacity >= 5) throw fulltablecardexception;  //TO BE IMPLEMENTED!
-    cardbuffer[capacity] = gc;
+    cardbuffer.push_back(gc);
     capacity++;
 };
 

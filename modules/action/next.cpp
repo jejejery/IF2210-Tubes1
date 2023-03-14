@@ -12,6 +12,9 @@ Next :: ~Next() {
 
 }
 
-void Next :: execute_action(const GameState& game) {
-    // NOTHING (maybe)
+void Next :: execute_action(GameState& game) {
+    cout << "Player " << (game.theQueue)->front() << " tidak melakukan apa-apa" << endl;
+    cout << "Giliran dilanjut ke pemain selanjutnya." << endl;
+    game.theQueue->dequeue();
+
 }

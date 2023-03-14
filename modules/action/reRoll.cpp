@@ -2,9 +2,13 @@
 #include "../gamestate/gamestate.hpp"
 
 
-ReRoll::ReRoll() {}
+ReRoll::ReRoll() {
+  // EMPTY
+}
 
-ReRoll::~ReRoll() {}
+ReRoll::~ReRoll() {
+  // EMPTY
+}
 
 void ReRoll::execute_action(GameState& gameState) {
    // remove 2 cards from player's deck

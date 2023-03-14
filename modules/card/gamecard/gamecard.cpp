@@ -37,9 +37,9 @@ void GameCard::set_color(string c){
 }
 
 ostream& operator<<(ostream& os,const GameCard& gc) {
-          os << gc.get_number() << ' ' << gc.get_color(); 
-          return os; 
-    }
+    os << gc.get_number() << ' ' << gc.get_color(); 
+    return os; 
+}
 
 bool GameCard::operator>(const GameCard& gc){
     return this->card_weight() > gc.card_weight();

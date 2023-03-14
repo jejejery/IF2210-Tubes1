@@ -28,6 +28,12 @@ string AbilityCard::get_ability(){
 void AbilityCard::set_ability(string ab){
     this->ability = ab;
 }
+
+AbilityCard& AbilityCard::operator=(const AbilityCard& ab){
+    this->ability = ab.ability;
+    return *this;
+}
+
 //SPEK TUBES
 int AbilityCard::value() const{
     return 0xCAFE;

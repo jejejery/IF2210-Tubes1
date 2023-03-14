@@ -9,7 +9,8 @@ class Double : public Action
     public:
         Double();
         ~Double();
-        void execute_action(GameState&) override;
+        void execute_action(GameState&);
+        // int cln();
 };
 
 #endif

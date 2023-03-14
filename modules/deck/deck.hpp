@@ -1,7 +1,7 @@
 #ifndef DECK_HPP_
 #define DECK_HPP_
 
-#include "../card/card.hpp"
+#include "../card/gamecard/gamecard.hpp"
 #include <iostream>
 #include <random>
 using namespace std;

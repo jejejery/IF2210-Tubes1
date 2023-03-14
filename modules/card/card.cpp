@@ -169,13 +169,3 @@ int Card::value() const{return 0xDEAD;}
 //     mt19937 gen(rd());
 //     shuffle(abilities.begin(), abilities.end(), gen);
 // }
-
-
-
-
-
-
-
-
-
-

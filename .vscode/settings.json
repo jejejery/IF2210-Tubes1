@@ -3,7 +3,24 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "vector": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "iosfwd": "cpp",
+        "atomic": "cpp",
+        "deque": "cpp",
+        "exception": "cpp",
+        "fstream": "cpp",
+        "istream": "cpp",
+        "iterator": "cpp",
+        "memory": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "xmemory": "cpp",
+        "xutility": "cpp"
     },
     "cmake.configureOnOpen": false
 }

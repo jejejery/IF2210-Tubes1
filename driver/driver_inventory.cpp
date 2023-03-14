@@ -25,6 +25,10 @@ int main(){
     AbilityCard *ab1 = new AbilityCard("Quater");
     p1->setAbility(ab1);
     Player *p2 = new Player(11);
+    p1->add_card(new GameCard());
+    p1->add_card(new GameCard());
+    p2->add_card(new GameCard());
+    p2->add_card(new GameCard());
     p1->debug();
     p2->debug();
     cout << "ISI DEK SEBELUM SWAP: \n\n";

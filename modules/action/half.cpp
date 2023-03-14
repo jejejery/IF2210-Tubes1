@@ -13,15 +13,11 @@ Half :: ~Half()
 
 }
 
+
 void Half :: execute_action(GameState& game)
 {   
-    uint64_t newReward = game.get_reward() / 2;
-    if(newReward >= 1)
-    {
-        game.set_reward(newReward);
-    }else
-    {
-        game.set_reward(1);
-    }
+   cout << "<p" << ( (game.get_thePlayers() )  [(game.theQueue)->front()-1]  ) -> get_player_ID() <<"> melakukan HALF! Poin hadiah turun dari " << game.get_reward() << " menjadi " << game.get_reward()/2 << endl;
+   game.set_reward(game.get_reward() / 2);
+   game.theQueue->dequeue();
 
 }

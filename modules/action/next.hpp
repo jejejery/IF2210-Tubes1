@@ -10,7 +10,7 @@ class Next : public Action
     public:
         Next();
         ~Next();
-        void execute_action(const GameState&);
+        void execute_action(GameState&);
 
 };
 

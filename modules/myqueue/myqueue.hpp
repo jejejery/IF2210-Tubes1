@@ -1,3 +1,5 @@
+#ifndef QUEUE_HPP_
+#define QUEUE_HPP_
 #include <iostream>
 #include <stack>
 #include <vector>
@@ -64,3 +66,5 @@ class myQueue{
     }
     
 };
+
+#endif

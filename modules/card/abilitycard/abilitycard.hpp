@@ -1,5 +1,5 @@
-#ifndef ABILITY_HPP_
-#define ABILITY_HPP_
+#ifndef ABILITYCARD_HPP_
+#define ABILITYCARD_HPP_
 
 #include "../card.hpp"
 
@@ -23,7 +23,6 @@ class AbilityCard : public Card{
 
         //Operator Assignment
         AbilityCard& operator=(const AbilityCard&);
-
         
         //SPEK TUBES
         int value() const;

@@ -29,30 +29,15 @@ Deck::Deck(int size)
 
 Deck::Deck(string filepath)
 {
-    ifstream myfile(filepath);
+    ifstream infile(filepath);
     string line;
-    Deck* newDeck;
-    int countLine = 0;
-    // try {
-        if (myfile.is_open()) {
-            while (getline(myfile, line)) {
-                stringstream ss(line);
-                int number;
-                string color;
-                ss >> number >> color;
-
-                GameCard* newCard = new GameCard(number, color);
-                newDeck->cards[countLine] = newCard;
-                countLine++;
-            }
-            myfile.close();
-        } else {
-            // throw fileError;
-        }
-    // }
-    // catch (exception) {
-    //     // error handling
-    // }
+    while (getline(infile, line)) {
+        string color = line.substr(0, line.find(","));     // contoh isi file test.txt: Merah, 1
+        int number = stoi(line.substr(line.find(",")+1));  //                           Biru, 13
+                                                           //                           dst ...
+        GameCard* newCard = new GameCard(number, color);
+        this->cards.push_back(newCard);
+    }
 }
 
 Deck::~Deck()
