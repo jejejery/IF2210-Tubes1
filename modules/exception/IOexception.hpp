@@ -12,8 +12,8 @@ class IOexception : public Exception
         static string message[];
 
     public:
-        IOexception(int); // ctor 
-        // ~IOexception(); 
+        IOexception(int); // user-defined ctor
+        IOexception(const IOexception&); // cctor
         static int getNumOfIOException();
         void displayMessage() const;
 

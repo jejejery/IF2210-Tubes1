@@ -13,7 +13,8 @@ class CommandException : public Exception
 
     public: 
         CommandException(int); // ctor 
-        static int getNumOfCommandException();
+        CommandException(const CommandException&); // cctor
+        static int getNumOfCommandException(); 
         void displayMessage() const;
 
 };

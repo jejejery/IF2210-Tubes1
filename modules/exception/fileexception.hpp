@@ -9,14 +9,13 @@ class FileException : public Exception
 {
     protected:
         static int numOfFileException;
-        // static string message[];
         string path;
     
     public:
-        FileException(int); // ctor 
-        // ~FileException();
-
+        FileException(string); // user-defined ctor  
+        FileException(const FileException&);
         static int getNumOfFileException();
-        void displayMessage();
+        string getFileException();
+        void displayMessage() const;
 };
 #endif
