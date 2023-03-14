@@ -6,10 +6,10 @@ using namespace std;
 
 class Half : public Action 
 {
-    private:
-
     public:
-
+    Half();
+    ~Half();
+    void execute_action(GameState&) override;
 };
 
 #endif

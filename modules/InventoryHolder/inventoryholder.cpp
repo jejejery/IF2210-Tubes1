@@ -2,9 +2,9 @@
 
 InventoryHolder::InventoryHolder():num_of_cards(0){}; //ctor
 
-InventoryHolder::InventoryHolder(uint8_t num):num_of_cards(num){
-    cardbuffer.resize(num);
-    for(int i = 0; i < num; i++) cardbuffer[i] = new GameCard();
+InventoryHolder::InventoryHolder(int num):num_of_cards(num){
+    // cardbuffer.resize(num);
+    // for(int i = 0; i < num; i++) cardbuffer[i] = new GameCard();
 }; //param ctor
 
 InventoryHolder::~InventoryHolder(){

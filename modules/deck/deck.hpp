@@ -13,6 +13,7 @@ class Deck{
 
         // user-defined constructor
         Deck(int);
+        Deck(string);
 
         // destructor
         ~Deck();
@@ -25,8 +26,7 @@ class Deck{
 
         GameCard* drawCard();
 
-
-
+        void addCard(GameCard*);
         void debug();
 
     private:

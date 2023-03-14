@@ -10,20 +10,20 @@ using namespace std;
 Deck::Deck() 
 {
     for (int i = 1; i <= 13; i++) {
-        cards.push_back(new GameCard(i, "Red"));
-        cards.push_back(new GameCard(i, "Yellow"));
-        cards.push_back(new GameCard(i, "Blue"));
-        cards.push_back(new GameCard(i, "Green"));
+        cards.push_back(new GameCard(i, "Merah"));
+        cards.push_back(new GameCard(i, "Kuning"));
+        cards.push_back(new GameCard(i, "Biru"));
+        cards.push_back(new GameCard(i, "Hijau"));
     }
 }
 
 Deck::Deck(int size)
 {
     for (int i = 1; i <= 13; i++) {
-        cards.push_back(new GameCard(i, "Red"));
-        cards.push_back(new GameCard(i, "Yellow"));
-        cards.push_back(new GameCard(i, "Blue"));
-        cards.push_back(new GameCard(i, "Green"));
+        cards.push_back(new GameCard(i, "Merah"));
+        cards.push_back(new GameCard(i, "Kuning"));
+        cards.push_back(new GameCard(i, "Biru"));
+        cards.push_back(new GameCard(i, "Hijau"));
     }
 }
 
@@ -83,6 +83,10 @@ GameCard* Deck::drawCard()
     return drawn;
 }
 
+void Deck::addCard(GameCard* gc){
+    cards.push_back(gc);
+}
+
 int Deck::deckSize() const
 {
     return this->cards.size();
@@ -91,4 +95,5 @@ int Deck::deckSize() const
 void Deck::debug()
 {
     for(int i = 0; i < this->deckSize(); i++) cout << *(this->cards[i]) << endl;
+    cout << "Deck Size: " << this->deckSize() << endl;
 }

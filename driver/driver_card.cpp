@@ -1,12 +1,16 @@
-#include "../modules/card/card.hpp"
+// #include "../modules/card/card.hpp"
 #include "../modules/card/card.cpp"
+// #include "../modules/card/abilitycard/abilitycard.hpp"
+#include "../modules/card/abilitycard/abilitycard.cpp"
+// #include "../modules/card/gamecard/gamecard.hpp"
+#include "../modules/card/gamecard/gamecard.cpp"
 #include <iostream>
 using namespace std;
 
 
 int main(){
     Card *gc1 = new Card();
-    GameCard gc2(12,"Biru");
+    GameCard gc2(12,"Biruuu");
     cout << hex << gc1->value() << endl;
     cout << hex << gc1->value() << endl;
     cout << hex << gc2.value() << endl;

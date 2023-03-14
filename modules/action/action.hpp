@@ -8,7 +8,9 @@ class GameState; //forward declaration
 
 class Action{
     public:
-    virtual void execute_action() = 0;
+    Action();
+    ~Action();
+    virtual void execute_action(GameState&) = 0;
 };
 
 #endif

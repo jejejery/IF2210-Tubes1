@@ -37,7 +37,7 @@ uint8_t Player::get_player_ID() const{
     return this->player_ID;
 };
 
-uint8_t Player::get_num_of_cards() const {
+int Player::get_num_of_cards() const {
     return this->num_of_cards;
 }
 AbilityCard* Player::get_theAbilityCard(){
@@ -54,6 +54,9 @@ string Player::get_action_name(){
     return this->action_name;
 };
 
+GameCard* Player::get_ith_card(int i){
+    return this->cardbuffer[i];
+}
 void Player::setAbilityState(bool b){
     this->AbilityState = b;
 };
@@ -71,8 +74,18 @@ void Player::set_player_card(int i,GameCard* gc){
     this->cardbuffer[i] = gc;
 }
 
+void Player::add_card(GameCard* gc){
+    cout << *gc << endl;
+    this->cardbuffer.push_back(gc);
+}
+
+void Player::empty_cards()
+{
+    this->cardbuffer.resize(0);
+}
 void Player::debug(){
     cout << "ID Player: " << this->player_ID << endl;
+    cout << "Ukuran Buffer: " << this->cardbuffer.size() << endl;
     cout << "Kartu Pertama: " << *(this->cardbuffer[0]) << endl;
     cout << "Kartu Kedua: " << *(this->cardbuffer[1]) << endl;
     cout << "Ability Card: " << *(this->theAbilityCard) << endl;

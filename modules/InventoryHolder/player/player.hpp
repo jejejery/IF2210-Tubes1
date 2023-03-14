@@ -1,5 +1,5 @@
+#ifndef PLAYER_HPP_
 #define PLAYER_HPP_
-#ifdef PLAYER_HPP_
 
 #include "../inventoryholder.hpp"
 
@@ -26,13 +26,15 @@ class Player : public InventoryHolder {
     ~Player(); //dtor
 
     //GETTER, SETTER
-    uint8_t get_num_of_cards() const override;
+    int get_num_of_cards() const override;
 
     uint8_t get_player_ID() const;
     AbilityCard* get_theAbilityCard();
     bool getAbilityState();
     uint64_t get_the_score();
     string get_action_name();
+    GameCard* get_ith_card(int);
+
     
     void setAbilityState(bool);
     void setAbility(AbilityCard*);
@@ -41,14 +43,11 @@ class Player : public InventoryHolder {
 
     //Edit card numb
     void set_player_card(int,GameCard*);
+    void add_card(GameCard*);
+    void empty_cards();
 
     //debug
     void debug();
-
-    
-
-
-
 
 
 } ;

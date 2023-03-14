@@ -1,13 +1,17 @@
 #ifndef REVERSE_HPP_
 #define REVERSE_HPP_
 #include <iostream>
-
+#include "action.hpp"
 using namespace std;
 
-class Reverse {
+class Reverse : public Action
+{
     private:
 
     public:
+        Reverse();
+        ~Reverse();
+        void execute_action(GameState&);
 
 };
 
