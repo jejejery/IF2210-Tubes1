@@ -2,6 +2,7 @@
 #define INV_HPP_
 
 #include "../card/card.hpp"
+#include "../card/gamecard/gamecard.hpp"
 // #include "../card/card.cpp"
 #include <iostream>
 #include <vector>

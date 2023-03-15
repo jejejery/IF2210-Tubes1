@@ -6,6 +6,9 @@
 #include "../action/double.hpp"
 #include "../action/half.hpp"
 #include "../action/next.hpp"
+#include "../action/reverse.hpp"
+#include "../exception/exception.hpp"
+#include "../exception/commandexception.hpp"
 
 class TheGame{
     private:
@@ -14,6 +17,7 @@ class TheGame{
     
     public:
     TheGame(); //ctor
+    TheGame(const TheGame&); //cctor
     ~TheGame(); //dtor
     
     void start();

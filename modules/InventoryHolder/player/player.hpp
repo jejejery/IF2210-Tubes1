@@ -2,6 +2,7 @@
 #define PLAYER_HPP_
 
 #include "../inventoryholder.hpp"
+#include "../../card/abilitycard/abilitycard.hpp"
 
 #include <iostream>
 #include <vector>

@@ -20,7 +20,8 @@
         "xlocale": "cpp",
         "xlocinfo": "cpp",
         "xmemory": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "stack": "cpp"
     },
     "cmake.configureOnOpen": false
 }

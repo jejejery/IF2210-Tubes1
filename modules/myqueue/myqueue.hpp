@@ -10,10 +10,11 @@ template <class T>
 class myQueue{
     private:
     vector<T> theQueue;
+    const int maxCapacity;
 
     public:
-    myQueue(){}; //queue kosong
-    myQueue(vector<T> v){
+    myQueue(int max):maxCapacity(max){}; //queue kosong
+    myQueue(vector<T> v):maxCapacity(v.size()){
         for(int i = 0; i < v.size(); v++) this->theQueue.push_back(v[i]);
     };
     ~myQueue(){};
@@ -25,6 +26,10 @@ class myQueue{
     int size() const{
         return this->theQueue.size();
     };
+
+    int get_max_capacity() const{
+        return this->maxCapacity;
+    }
     void swapping(const myQueue<T>& other_queue){
         this->theQueue.swap(other_queue.theQueue);
     };
@@ -49,16 +54,23 @@ class myQueue{
     }
 
     //Advanced queue operation
-    void reverse(){
-        stack<T> Stack;
-    while (!this->theQueue.empty()) {
-        Stack.push(front());
-        dequeue();
-    }
-    while (!Stack.empty()) {
-        enqueue(Stack.top());
-        Stack.pop();
-    }
+    // void reverse(){
+    //     stack<T> Stack;
+    // while (!this->theQueue.empty()) {
+    //     Stack.push(front());
+    //     dequeue();
+    // }
+    // while (!Stack.empty()) {
+    //     enqueue(Stack.top());
+    //     Stack.pop();
+    // }
+    // }
+
+    void replace_queue(vector<T> another_queue){
+        theQueue.clear();
+        for(int i = 0; i < another_queue.size() ; i++){
+            this->enqueue(another_queue[i]);
+        }
     }
 
     void debugging(){

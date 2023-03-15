@@ -29,13 +29,21 @@
 #include "../modules/action/double.hpp"
 #include "../modules/action/half.hpp"
 #include "../modules/action/next.hpp"
+#include "../modules/action/reverse.hpp"
 #include "../modules/action/double.cpp"
 #include "../modules/action/half.cpp"
 #include "../modules/action/next.cpp"
+#include "../modules/action/reverse.cpp"
 
 //theGame
 #include "../modules/the_game/TheGame.hpp"
 #include "../modules/the_game/TheGame.cpp"
+
+//Exception
+#include "../modules/exception/exception.hpp"
+#include "../modules/exception/exception.cpp"
+#include "../modules/exception/commandexception.hpp"
+#include "../modules/exception/commandexception.cpp"
 
 
 #include <iostream>

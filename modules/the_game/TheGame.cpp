@@ -4,14 +4,23 @@
 using namespace std;
 
 TheGame::TheGame(){
-    this->action = new Next();
+    this->action = NULL;
     this->gameState = new GameState();
+    // this->action = new Next();
+    // this->gameState = new GameState();
+    // this->exception = new CommandException(10);
 } //ctor
+
+// TheGame(const TheGame& tg){
+//     this->action = tg.action;
+//     this->gameState = tg.gameState;
+//     this->exception = tg.exception;
+// }
 TheGame::~TheGame(){
     delete this->action;
     delete this->gameState;
 } //dtor
-    
+
 void TheGame::start(){
     cout << "\t\t    ____  _   ____  _______     ________            ______               __" << endl;
     cout << "\t\t   / __ )/ | / /  |/  / __ \\  /_  __/ /_  ___     / ____/___ __________/ /" << endl;
@@ -22,7 +31,13 @@ void TheGame::start(){
     cout << "Apakah ingin menerima input dari file??" << endl;
 
     while(!((this->gameState)->isEndgame())){
+        try{
         this->run_game();
+        }
+        catch(Exception* e){
+            (e)->displayMessage();
+            delete e;
+        }
     }
 }
 
@@ -34,10 +49,7 @@ void TheGame::run_game(){
     string aksi;
     cin >> aksi;
     this->execute_action(aksi);
-    cout << ((this->gameState)->get_theQueue())->isEmpty() << endl;
-    if(((this->gameState)->get_theQueue())->isEmpty()){
-        (this->gameState)->reset_permainan();
-    }
+    
     
     
 }
@@ -46,16 +58,27 @@ void TheGame::execute_action(string aksi){
     if(aksi == "DOUBLE"){
         this->action = new Double();
         (this->action)->execute_action(*(this->gameState));
+        delete this->action;
     }
     else if(aksi == "NEXT"){
         this->action = new Next();
         (this->action)->execute_action(*(this->gameState));
+        delete this->action;
     }
     else if(aksi == "HALF"){
         this->action = new Half();
         (this->action)->execute_action(*(this->gameState));
+        delete this->action;
+    }
+    else if(aksi == "REVERSE"){
+        this->action = new Reverse();
+        (this->action)->execute_action(*(this->gameState));
+        delete this->action;
     }
     else{
-        cout << "Bukan pilihan yg tepat yah" << endl;
+        throw new CommandException(0);
+    }
+    if(((this->gameState)->get_theQueue())->isEmpty()){
+        (this->gameState)->reset_permainan();
     }
 }

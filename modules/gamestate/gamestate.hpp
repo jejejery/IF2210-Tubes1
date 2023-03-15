@@ -16,11 +16,21 @@
 // #include "../card/combinationcard/combinationcard.hpp"
 // #include "../card/abilitycard/abilitycard.hpp"
 
+
+//Forward Declaration
 class Action;
 class Next;
 class Half;
 class Double;
+class Abilityless;
+class Quadruple;
+class Quarter;
+class ReRoll;
+class Reverse;
+class SwapCard;
+class Switch;
 
+//GameState
 class GameState{
     private:
     int permainan_ke;
@@ -32,22 +42,24 @@ class GameState{
     vector<Player*> thePlayers;
     //CombinationCard *theCombination;
     TableCard* theTableCards;
+    vector<int> futureQueue; //Saat terjadi reverse, future queue diupdate
+    bool isReverse;
     
     //Konstanta, aturan game
-    const uint64_t maxScore = (0x1 << 32);
+    const uint64_t maxScore = (uint64_t(1) << 32);
     const uint16_t num_of_players = 7;
     //friend class
     friend class Action;
     friend class Double;
     friend class Half;
     friend class Next;
-    // friend class Abilityless;
-    // friend class Quadruple;
-    // friend class Quarter;
-    // friend class ReRoll;
-    // friend class Reverse;
-    // friend class SwapCard;
-    // friend class Switch;
+    friend class Abilityless;
+    friend class Quadruple;
+    friend class Quarter;
+    friend class ReRoll;
+    friend class Reverse;
+    friend class SwapCard;
+    friend class Switch;
 
     public:
     GameState(); //ctor
@@ -65,7 +77,8 @@ class GameState{
     vector<Player*> get_thePlayers() const;
     //CombinationCard *theCombination;
     TableCard* get_theTableCards() const;
-    
+    Player* get_current_player() const;
+
     //==============GETTER=============
     void set_permainan_ke(int);
     void set_round(int);
@@ -82,6 +95,7 @@ class GameState{
     //==============Method==========
     void reset_permainan(); //Reset permainan dilakukan saat selesai ronde 6 
     void restore_deck();
+    void restore_queue();
     void share_cards();
 
 

@@ -6,11 +6,12 @@ GameState::GameState(){
     this->permainan_ke = 0;
     this->round = 1;
     this->reward = 64;
+    this->isReverse = false;
 
     //inisiasi objek
     theDeck = new Deck();
 
-    theQueue = new myQueue<int>();
+    theQueue = new myQueue<int>(7);
     for(int i = 0; i < this->num_of_players; i++) thePlayers.push_back(new Player(i+1));
 
     for(int i = 1; i <= this->num_of_players; i++) theQueue->enqueue(i);
@@ -19,6 +20,11 @@ GameState::GameState(){
             (this->thePlayers[i])->add_card((this->theDeck)->drawCard());
         }
     }
+    
+    //futureQueue dinisialisasi
+    for(int i = 2; i <= this->num_of_players; i++) futureQueue.push_back(i);
+    futureQueue.push_back(1);
+
     //CombinationCard *theCombination;
     theTableCards = new TableCard();
 }
@@ -60,6 +66,9 @@ TableCard* GameState::get_theTableCards() const{
     return this->theTableCards;
 }
 
+Player* GameState::get_current_player() const{
+    return this->thePlayers[theQueue->front()-1];
+}
 //==============GETTER=============
 void GameState::set_permainan_ke(int x){
     this->permainan_ke = x;
@@ -81,15 +90,10 @@ void GameState::reset_permainan(){
 
     //Pindahin seluruh kartu dari tablecard ke dek
     this->restore_deck();
+    this->restore_queue();
 
-    for(int i = 1; i <= this->num_of_players; i++){
-        theQueue->enqueue(i);
-    } 
 
-    for(int i = 0; i < this->permainan_ke; i++){
-        theQueue->enqueue(theQueue->front());
-        theQueue->dequeue();
-    }
+    
 }
 
  void GameState::restore_deck(){
@@ -110,9 +114,22 @@ void GameState::reset_permainan(){
     } 
  }
 
+void GameState::restore_queue(){
+    for(int i = 0; i < this->num_of_players; i++) theQueue->enqueue(futureQueue[i]); //Copy seluruhnya
+    if(this->isReverse){
+        this->isReverse = false;    
+    }
+    else{
+        futureQueue.push_back(futureQueue.front());
+        futureQueue.erase(futureQueue.begin()); 
+    }
+    
+}
+
 bool GameState::isEndgame() const{
     bool hehe = false;
     for(int i = 0; i < this->num_of_players; i++) hehe = hehe || ((this->thePlayers[i])->get_the_score() == this->maxScore);
+    return hehe;
 }
 
 void GameState::calculate_winner(){}

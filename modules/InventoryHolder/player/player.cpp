@@ -89,5 +89,6 @@ void Player::debug(){
     cout << "Kartu Pertama: " << *(this->cardbuffer[0]) << endl;
     cout << "Kartu Kedua: " << *(this->cardbuffer[1]) << endl;
     cout << "Ability Card: " << *(this->theAbilityCard) << endl;
+    cout << "Skor Player: " << this->the_score << endl;
     cout << "Aksi: " << this->action_name << endl;
 }

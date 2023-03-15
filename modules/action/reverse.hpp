@@ -2,6 +2,7 @@
 #define REVERSE_HPP_
 #include <iostream>
 #include "action.hpp"
+#include <stack>
 using namespace std;
 
 class Reverse : public Action
