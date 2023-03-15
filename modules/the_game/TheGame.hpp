@@ -9,11 +9,12 @@
 #include "../action/reverse.hpp"
 #include "../exception/exception.hpp"
 #include "../exception/commandexception.hpp"
+#include <map>
 
 class TheGame{
     private:
-    Action* action;
     GameState* gameState;
+    map<string,Action*> actions;
     
     public:
     TheGame(); //ctor

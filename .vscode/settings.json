@@ -21,7 +21,8 @@
         "xlocinfo": "cpp",
         "xmemory": "cpp",
         "xutility": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "map": "cpp"
     },
     "cmake.configureOnOpen": false
 }

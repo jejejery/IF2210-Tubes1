@@ -4,11 +4,14 @@
 using namespace std;
 
 TheGame::TheGame(){
-    this->action = NULL;
     this->gameState = new GameState();
+    //Inisiasi actions
+    actions["NEXT"] = new Next();
+    actions["DOUBLE"] = new Double();
+    actions["HALF"] = new Half();
+    actions["REVERSE"] = new Reverse();
     // this->action = new Next();
     // this->gameState = new GameState();
-    // this->exception = new CommandException(10);
 } //ctor
 
 // TheGame(const TheGame& tg){
@@ -17,7 +20,12 @@ TheGame::TheGame(){
 //     this->exception = tg.exception;
 // }
 TheGame::~TheGame(){
-    delete this->action;
+    map<string, Action*>::iterator it = actions.begin();
+    while (it != actions.end())
+    {
+    delete it->second;
+    ++it;
+    }
     delete this->gameState;
 } //dtor
 
@@ -55,25 +63,8 @@ void TheGame::run_game(){
 }
 
 void TheGame::execute_action(string aksi){
-    if(aksi == "DOUBLE"){
-        this->action = new Double();
-        (this->action)->execute_action(*(this->gameState));
-        delete this->action;
-    }
-    else if(aksi == "NEXT"){
-        this->action = new Next();
-        (this->action)->execute_action(*(this->gameState));
-        delete this->action;
-    }
-    else if(aksi == "HALF"){
-        this->action = new Half();
-        (this->action)->execute_action(*(this->gameState));
-        delete this->action;
-    }
-    else if(aksi == "REVERSE"){
-        this->action = new Reverse();
-        (this->action)->execute_action(*(this->gameState));
-        delete this->action;
+    if(this->actions[aksi] != NULL){
+        (this->actions[aksi])->execute_action(*(this->gameState));
     }
     else{
         throw new CommandException(0);
