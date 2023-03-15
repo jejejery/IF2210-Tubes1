@@ -9,7 +9,7 @@ class Pair : public CombinationCard
     private:
         // double value;
     public:
-        bool detectPair();
+        static bool detectPair();
 };
 
 #endif

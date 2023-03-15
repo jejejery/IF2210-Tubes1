@@ -1,12 +1,12 @@
 #include "straight.hpp"
-#include <iostream>
 
 using namespace std;
 
-bool Straight::detectStraight()
+bool Straight::detectStraight(pair<int, int> longestStraight)
 {
-    CombinationCard::arrNumbers(); // bangkitkan existing number
-    int* checker = CombinationCard::getExistingNumber();
-
-    
+    if (longestStraight.second - longestStraight.first + 1 >= 5){
+        return true;
+    } else{
+        return false;
+    }
 }

@@ -9,7 +9,7 @@ class ThreeKind : public CombinationCard
     private:
         // double value;
     public:
-        bool detectThreeKind();
+        static bool detectThreeKind();
 };
 
 #endif

@@ -9,7 +9,7 @@ class Flush : public CombinationCard
     private:
         // double value;
     public:
-        bool detectFlush();
+        static bool detectFlush(pair<string, int>);
 };
 
 #endif
