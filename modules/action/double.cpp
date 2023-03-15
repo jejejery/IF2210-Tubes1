@@ -19,8 +19,6 @@ void Double :: execute_action(GameState& game)
     cout << "<p" << (game.get_current_player()) -> get_player_ID() <<"> melakukan DOUBLE! Poin hadiah naik dari " << game.get_reward() << " menjadi " << game.get_reward()*2 << endl;
     game.set_reward(game.get_reward()*2);
     game.theQueue->dequeue();
-    game.theTableCards->addCard(game.theDeck->drawCard());
-    
 }
 
 // int Double::cln(){

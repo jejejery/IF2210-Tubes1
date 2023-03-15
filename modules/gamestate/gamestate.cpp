@@ -1,9 +1,12 @@
 #include "gamestate.hpp"
 #include <iostream>
+#include <ctime>
+// #include <fstream>
+// #include <sstream>
 using namespace std;
 
 GameState::GameState(){
-    this->permainan_ke = 0;
+    this->permainan_ke = 1;
     this->round = 1;
     this->reward = 64;
     this->isReverse = false;
@@ -26,6 +29,17 @@ GameState::GameState(){
     futureQueue.push_back(1);
 
     //CombinationCard *theCombination;
+
+    //abilityCard diinisiasi
+    theAbilities.push_back(new AbilityCard("RE-ROLL"));
+    theAbilities.push_back(new AbilityCard("QUADRUPLE"));
+    theAbilities.push_back(new AbilityCard("QUARTER"));
+    theAbilities.push_back(new AbilityCard("REVERSE"));
+    theAbilities.push_back(new AbilityCard("SWAPCARD"));
+    theAbilities.push_back(new AbilityCard("SWITCH"));
+    theAbilities.push_back(new AbilityCard("ABILITYLESS"));
+
+    //TableCard diinisiasi
     theTableCards = new TableCard();
 }
 
@@ -83,17 +97,29 @@ void GameState::set_thePlayers(vector<Player*> tp){this->thePlayers = tp;}
 //CombinationCard *theCombination{}
 void GameState::set_theTableCards(TableCard* tc){this->theTableCards = tc;}
 //==============Method==========
-void GameState::reset_permainan(){
-    this->permainan_ke++;
-    this->round = 1;
-    this->reward = 64;
+void GameState::next_round(){
+    // this->permainan_ke++;
+    if(this->round == 6) this->next_permainan();
+    else{
+        if(this->round == 2) this->share_ability_cards();
+        this->restore_queue();
+        this->round++;
+    }
+    // this->reward = 64;
 
     //Pindahin seluruh kartu dari tablecard ke dek
-    this->restore_deck();
-    this->restore_queue();
+    // this->restore_deck();
+    
 
 
     
+}
+
+void GameState::next_permainan(){
+    // this->reward = 64;
+
+    //Pindahin seluruh kartu dari tablecard ke dek
+    // this->restore_deck();
 }
 
  void GameState::restore_deck(){
@@ -124,6 +150,25 @@ void GameState::restore_queue(){
         futureQueue.erase(futureQueue.begin()); 
     }
     
+}
+
+void GameState::share_ability_cards(){
+    
+    srand(time(0));
+
+    // Inisiasi LCG
+    int a = 11, c = 8, k = this->theAbilities.size();
+    int x = rand() % k;
+
+    // LCG untuk bilangan antara 0 - 51
+    for (int i = 0; i < k; i++) {
+        x = (a * x + c) % k;
+        swap(this->theAbilities[i],this->theAbilities[x]);
+    }
+
+    for(int i = 0; i < k; i++){
+        (this->thePlayers[i])->setAbility(this->theAbilities[i]);
+    }
 }
 
 bool GameState::isEndgame() const{
@@ -160,7 +205,7 @@ void GameState::debug(){
     cout << "TABLE CARDS: " << endl;
     (this->theTableCards)->debug();
 
-    cout << "Permainan ke: " << this->permainan_ke << endl;
+    cout << "Permainan ke: " << this->get_permainan_ke() << endl;
     cout << "Ronde ke: " << this->round << endl;
     cout << "Reward: " << this->reward << endl;
 

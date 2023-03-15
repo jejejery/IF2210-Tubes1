@@ -50,7 +50,7 @@ void Deck::shuffleDeck()
     srand(time(0));
 
     // Inisiasi LCG
-    int a = 11, c = 8, k = 52;
+    int a = 11, c = 8, k = this->deckSize();
     int x = rand() % k;
 
     // LCG untuk bilangan antara 0 - 51

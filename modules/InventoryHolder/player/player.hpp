@@ -42,6 +42,15 @@ class Player : public InventoryHolder {
     void setScore(uint64_t);
     void set_action_name(string);
 
+    //Assignment -- Pembanding skor player
+    bool operator>(const Player&);
+    bool operator<(const Player&);
+    bool operator==(const Player&);
+
+    
+    void operator+(const Player&);
+    GameCard* operator-();
+
     //Edit card numb
     void set_player_card(int,GameCard*);
     void add_card(GameCard*);

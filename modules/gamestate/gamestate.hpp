@@ -40,6 +40,7 @@ class GameState{
     Deck* theDeck;
     myQueue<int>* theQueue;
     vector<Player*> thePlayers;
+    vector<AbilityCard*> theAbilities;
     //CombinationCard *theCombination;
     TableCard* theTableCards;
     vector<int> futureQueue; //Saat terjadi reverse, future queue diupdate
@@ -93,10 +94,12 @@ class GameState{
 
 
     //==============Method==========
-    void reset_permainan(); //Reset permainan dilakukan saat selesai ronde 6 
+    void next_round(); 
+    void next_permainan(); //Reset permainan dilakukan saat selesai ronde 6 
     void restore_deck();
     void restore_queue();
-    void share_cards();
+
+    void share_ability_cards();
 
 
     bool isEndgame() const;

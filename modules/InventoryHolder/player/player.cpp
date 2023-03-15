@@ -74,8 +74,30 @@ void Player::set_player_card(int i,GameCard* gc){
     this->cardbuffer[i] = gc;
 }
 
+//Assignment
+bool Player::operator>(const Player& p){
+    return this->the_score > p.the_score;
+}
+bool Player::operator<(const Player& p){
+    return this->the_score < p.the_score;
+}
+bool Player::operator==(const Player& p){
+    return this->the_score == p.the_score;
+}
+
+    
+void Player::operator+(GameCard* gc){
+    add_card(gc);
+}
+
+GameCard* Player::operator-(){
+    GameCard* gc = this->cardbuffer.front();
+    this->cardbuffer.erase(this->cardbuffer.begin());
+    return gc;
+};
+
 void Player::add_card(GameCard* gc){
-    cout << *gc << endl;
+    // cout << *gc << endl;
     this->cardbuffer.push_back(gc);
 }
 

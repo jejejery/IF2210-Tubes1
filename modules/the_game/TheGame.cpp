@@ -70,6 +70,6 @@ void TheGame::execute_action(string aksi){
         throw new CommandException(0);
     }
     if(((this->gameState)->get_theQueue())->isEmpty()){
-        (this->gameState)->reset_permainan();
+        (this->gameState)->next_round();
     }
 }

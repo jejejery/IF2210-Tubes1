@@ -16,6 +16,8 @@ Quadruple :: ~Quadruple()
 
 void Quadruple :: execute_action(GameState& game)
 {
-    uint64_t newReward = game.get_reward() * 4;
-    game.set_reward(newReward);
+    cout << "<p" << (game.get_current_player()) -> get_player_ID() <<"> melakukan QUADRUPLE! Poin hadiah naik dari " << game.get_reward() << " menjadi " << game.get_reward()*4 << endl;
+    game.set_reward(game.get_reward()*4);
+    game.theQueue->dequeue();
+    game.theTableCards->addCard(game.theDeck->drawCard());
 }
