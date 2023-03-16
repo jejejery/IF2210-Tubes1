@@ -15,8 +15,10 @@ Projek ini dibuat untuk memenuhi Tugas Besar Besar 1 IF2210 Pemrograman Berorien
 
 
 ## General Information & Features 
+Dalam permainan kartu kerajaan permen, permainan dimainkan oleh tepat 7 orang, dan akan berjalan sampai salah satu pemain mendapatkan total poin sebesar 2^32 atau lebih. Suatu permainan terdiri dari 6 ronde, dimana pada setiap ronde pemain akan dapat melakukan command berupa Next untuk melanjutkan permainan (semacam pass), Double untuk mengalikan 2 poin hadiah, Half untuk mengalikan setengah poin hadiah, serta Ability yang dimiliki oleh masing-masing pemain (ada sebanyak 7 ability berbeda). Pada awal permainan, pemain akan dibagikan 2 buah kartu Permainan Kerajaan Permen dan seiring berjalannya ronde akan ada kartu yang dibuka pada Table Card yang dapat dipakai oleh setiap pemain untuk membentuk combo di akhir permainan. Pemain dengan combo tertinggi pada akhir permainan (setelah ronde ke-6) akan mendapatkan poin hadiah yang telah ditetapkan. 
 
 ## Program Requirements
+1. 
 
 ## How To Build 
-
+1. Clone repositori ini dengan ```https://github.com/jejejery/IF2210-Tubes1.git```
