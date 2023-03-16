@@ -5,8 +5,8 @@ Projek ini dibuat untuk memenuhi Tugas Besar Besar 1 IF2210 Pemrograman Berorien
 
 ## Authors 
 
-|-----------------------------|-----------|
 | Nama                        |  Nim      |
+|-----------------------------|-----------|
 | Yobel Dean Christopher      | 13521067  |
 | Hobert Anthony Jonatan      | 13521079  |
 | Jeremya Dharmawan Raharjo   | 13521131  |
