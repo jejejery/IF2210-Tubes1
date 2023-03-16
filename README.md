@@ -22,3 +22,6 @@ Dalam permainan kartu kerajaan permen, permainan dimainkan oleh tepat 7 orang, d
 
 ## How To Build 
 1. Clone repositori ini dengan ```https://github.com/jejejery/IF2210-Tubes1.git```
+2. Pindah ke direktori yang telah di clone menggunakan command ```cd``` pada terminal
+3. Setelah sampai pada direktori ini, program dapat langsung dijalankan menggunakan file yang telah di compile ```./main```
+4. Dapat juga melakukan compile ulang dengan cara 
