@@ -43,6 +43,7 @@ class Player : public InventoryHolder {
     void setAbilityDisable(bool);
     void setAbility(AbilityCard*);
     void setScore(uint64_t);
+    void add_score(uint64_t);
     void set_action_name(string);
     void set_player_card(int,GameCard*);
 

@@ -17,6 +17,7 @@
 
 #include "../exception/exception.hpp"
 #include "../exception/commandexception.hpp"
+
 #include <map>
 
 class TheGame{
@@ -26,11 +27,12 @@ class TheGame{
     
     public:
     TheGame(); //ctor
-    TheGame(const TheGame&); //cctor
+    // TheGame(const TheGame&); //cctor
     ~TheGame(); //dtor
     
     void start();
     void run_game();
+    void end();
 
     void execute_action(string);
 

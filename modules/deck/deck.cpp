@@ -69,6 +69,11 @@ GameCard* Deck::drawCard()
     return drawn;
 }
 
+vector<GameCard*> Deck::getCards()
+{
+    return this->cards;
+}
+
 void Deck::addCard(GameCard* gc){
     cards.push_back(gc);
 }

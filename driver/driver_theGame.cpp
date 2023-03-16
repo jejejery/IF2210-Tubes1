@@ -5,7 +5,7 @@
 // #include "../modules/card/abilitycard/abilitycard.hpp"
 #include "../modules/card/abilitycard/abilitycard.cpp"
 // #include "../modules/card/combinationcard/combinationcard.hpp"
-// #include "../modules/card/combinationcard/combinationcard.cpp"
+#include "../modules/card/combinationcard/combinationcard.cpp"
 
 
 // #include "../modules/InventoryHolder/inventoryholder.hpp"
@@ -62,11 +62,11 @@
 #include "../modules/exception/IOexception.cpp"
 
 
+
 #include <iostream>
 using namespace std;
 
 int main(){
-    cout << "Test" << endl;
     TheGame *game = new TheGame();
     game->start();
     return 0;

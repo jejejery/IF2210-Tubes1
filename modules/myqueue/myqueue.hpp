@@ -79,4 +79,7 @@ class myQueue{
     
 };
 
+//GenericFunction, Tipe T: Pointer, asumsi tidak kosong
+
+
 #endif

@@ -8,12 +8,13 @@
 #include "../card/gamecard/gamecard.hpp"
 #include "../InventoryHolder/player/player.hpp"
 #include "../InventoryHolder/TableCard/TableCard.hpp"
-
+#include "../card/combinationcard/combinationcard.hpp"
 
 #include "../myqueue/myqueue.hpp"
 
-// #include "../card/gamecard/gamecard.hpp"
-// #include "../card/combinationcard/combinationcard.hpp"
+
+
+
 // #include "../card/abilitycard/abilitycard.hpp"
 
 
@@ -41,7 +42,7 @@ class GameState{
     myQueue<int>* theQueue;
     vector<Player*> thePlayers;
     vector<AbilityCard*> theAbilities;
-    //CombinationCard *theCombination;
+    vector<CombinationCard*> theCombination;
     TableCard* theTableCards;
     vector<int> futureQueue; //Saat terjadi reverse, future queue diupdate
     bool isReverse;
@@ -64,6 +65,7 @@ class GameState{
 
     public:
     GameState(); //ctor
+    GameState(string);
     ~GameState(); //dtor
 
     //SETTER GETTER
@@ -76,7 +78,7 @@ class GameState{
     Deck* get_theDeck() const;
     myQueue<int>* get_theQueue() const;
     vector<Player*> get_thePlayers() const;
-    //CombinationCard *theCombination;
+    vector<CombinationCard*> get_theCombination() const;
     TableCard* get_theTableCards() const;
     Player* get_current_player() const;
     //CombinationCard *theCombination() const;
@@ -102,9 +104,12 @@ class GameState{
 
     void share_ability_cards();
 
-    bool isEndgame() const;
-    void debug();
+    void calculate_winner();
+    void decide_combo();
 
+    bool isEndgame() const;
+    void theEnd();
+    void debug();
 
 };
 

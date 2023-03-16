@@ -5,6 +5,7 @@
 #include <functional>
 #include <algorithm>
 #include <utility>
+#include <map>
 #include "../card.hpp"
 #include "../gamecard/gamecard.hpp"
 
@@ -13,69 +14,100 @@ using namespace std;
 
 class CombinationCard : public Card {
     private:
-        vector<GameCard*> player_cards;
-        vector<GameCard*> table_cards;
         vector<GameCard*> totalCards; // table card + player card
-        int value;
-        int constant;
+        vector<int> existingNumber;
+        
+        static map<string,int> combinationOrder;
+
         string type;
     public:
         CombinationCard();
         CombinationCard(const vector<GameCard*>& playerCards, const vector<GameCard*>& tableCards);
         virtual ~CombinationCard();
 
+        string getType();
         // function to get the value and set type
         void setValue(int);
         void setType(string);
+        void setTotalCards(const vector<GameCard*>&, const vector<GameCard*>&);
+        void set_ith_Card(int,GameCard*);
 
-        // return int value of the highest combination
-        // int getHighestCombination();
-        // GameCard* highCard();
-        // vector<Card*> isPair();
-        // vector<Card*> isTwoPair();
-        // vector<Card*> isThreeKind();
-        // vector<Card*> isStraight();
-        // vector<Card*> isFlush();
-        // vector<Card*> isFullHouse();
-        // vector<GameCard*> isFourKind();
-        // vector<Card*> isStraightFlush();
+        
+        //getter
+        vector<GameCard*> getTotalCards() const;
+        vector<int> getExistingNumber() const;
 
-        // vector<GameCard*> getTableCards();
-        // vector<GameCard*> getPlayerCards();
-        // bool isPlayerCard(GameCard*);
+        //Pair
+        vector<GameCard*> getPair() const;
+        vector<GameCard*> getTwoPair() const;
+        vector<GameCard*> getThreeKind() const;
+        vector<GameCard*> getFourKind() const;
+        vector<GameCard*> getStraight() const;
+        vector<GameCard*> getFullHouse() const;
+        vector<GameCard*> getStraightFlush() const;
+        
+         
 
-        vector<GameCard*> getTotalCards();
+        
+        //DETECT:
+        bool detectPair() const;
+        bool detectTwoPair() const;
+        bool detectThreeKind() const;
+        bool detectStraight(pair<int, int>) const;
+        bool detectFlush(pair<string, int>) const;
+        bool detectFullHouse() const;
+        bool detectFourKind() const;
+        bool detectStraightFlush(pair<string, int>, pair<int, int>) const;
+        
+        
+        
 
-        // return double constant of the highest combination 
+        //Assignment operator
+        bool operator>(const CombinationCard&);
+        bool operator<(const CombinationCard&);
+        bool operator==(const CombinationCard&) const;
 
-        float searchElement(pair<int, char> );
+        //SameHandler
+        bool sameHandlerHighCard(const CombinationCard&) const;
+        bool sameHandlerPair(const CombinationCard&) const;
+        bool sameHandlerTwoPair(const CombinationCard&) const;
+        bool sameHandlerThreeKind(const CombinationCard&) const;
+        bool sameHandlerStraight(const CombinationCard&) const;
+        bool sameHandlerFlush(const CombinationCard&);
+        bool sameHandlerFullHouse(const CombinationCard&) const;
+        bool sameHandlerFourKind(const CombinationCard&) const;
+        bool sameHandlerStraightFlush(const CombinationCard&) const;
 
-        float searchElement(int, char);
-        // double getHighestCombinationType();
 
-        // bool operator<(CombinationCard& );
 
-        // bool operator>(CombinationCard& );
 
-        // bool operator==(CombinationCard& );
 
-        // string getOwnerCards() const;
+
+
 
         // to compare 
         // CombinationCard compare();
 
         static bool compareNumber(GameCard*, GameCard*);
         static bool compareColor(GameCard*, GameCard*);
+        static bool compareCard(GameCard*, GameCard*);
+
+        void sortTotalCards();
+
         void sortByNumber();
         void sortByNumber(int begin, int size);
         void sortByColor();
 
+        //
+        void decideBestCombination();
+
         pair<string, int> getLongestColor();
         pair<int, int> getLongestStraight();
 
-        static vector<int> existingNumber;
         // vector<int> getExistingNumber();
         // int* getExistingNumber();
+
+        void debug();
 
 
 };

@@ -17,7 +17,49 @@ GameState::GameState(){
 
     theQueue = new myQueue<int>(7);
     for(int i = 0; i < this->num_of_players; i++) thePlayers.push_back(new Player(i+1));
+    
+    for(int i = 0; i < this->num_of_players; i++) theCombination.push_back(new CombinationCard());
+    //inisialisasi player
+    for(int i = 1; i <= this->num_of_players; i++) theQueue->enqueue(i);
+    for(int i = 0; i < this->num_of_players; i++){
+        for(int k = 0; k < 2; k++) {
+            (this->thePlayers[i])->add_card((this->theDeck)->drawCard());
+        }
+    }
+    
+    //futureQueue dinisialisasi
+    for(int i = 2; i <= this->num_of_players; i++) futureQueue.push_back(i);
+    futureQueue.push_back(1);
 
+    //CombinationCard *theCombination;
+
+    //abilityCard diinisiasi
+    theAbilities.push_back(new AbilityCard("RE-ROLL"));
+    theAbilities.push_back(new AbilityCard("QUADRUPLE"));
+    theAbilities.push_back(new AbilityCard("QUARTER"));
+    theAbilities.push_back(new AbilityCard("REVERSE"));
+    theAbilities.push_back(new AbilityCard("SWAPCARD"));
+    theAbilities.push_back(new AbilityCard("SWITCH"));
+    theAbilities.push_back(new AbilityCard("ABILITYLESS"));
+
+    //TableCard diinisiasi
+    theTableCards = new TableCard();
+}
+
+GameState::GameState(string IO){
+    this->permainan_ke = 1;
+    this->round = 1;
+    this->reward = 64;
+    this->isReverse = false;
+
+    //inisiasi objek
+    //Inisialisasi dek
+    theDeck = new Deck(IO);
+
+    theQueue = new myQueue<int>(7);
+    for(int i = 0; i < this->num_of_players; i++) thePlayers.push_back(new Player(i+1));
+    
+    for(int i = 0; i < this->num_of_players; i++) theCombination.push_back(new CombinationCard());
     //inisialisasi player
     for(int i = 1; i <= this->num_of_players; i++) theQueue->enqueue(i);
     for(int i = 0; i < this->num_of_players; i++){
@@ -85,6 +127,10 @@ TableCard* GameState::get_theTableCards() const{
 Player* GameState::get_current_player() const{
     return this->thePlayers[theQueue->front()-1];
 }
+
+vector<CombinationCard*> GameState::get_theCombination() const{
+    return this->theCombination;
+}
 //==============GETTER=============
 void GameState::set_permainan_ke(int x){
     this->permainan_ke = x;
@@ -111,7 +157,12 @@ void GameState::next_round(){
 }
 
 void GameState::next_permainan(){
-    cout << "Next Permainan!" << endl;
+    cout << "\t\t=====================" << endl;
+    cout << "\t\t=====================" << endl;
+    cout << "\t\tPermainan Selanjutnya" << endl;
+    cout << "\t\t=====================" << endl;
+    cout << "\t\t=====================" << endl << endl;
+    this->calculate_winner();
     this->reward = 64;
     this->permainan_ke++;
     this->round = 1;
@@ -174,11 +225,45 @@ void GameState::share_ability_cards(){
     }
 }
 
+void GameState::calculate_winner(){
+    
+    this->decide_combo();
+    int the_winner = 1;
+    for(int i = 0; i < this->theCombination.size()-1; i++){
+        if(*(this->theCombination[i+1]) > *(this->theCombination[i])) the_winner = i+2;
+    }
+    (this->thePlayers[the_winner-1])->add_score(this->reward);
+
+    cout << "\nPlayer " << the_winner << "memenangkan permainan ke-" << this->permainan_ke << "!" << endl;
+
+}
+
+void GameState::decide_combo(){
+    for(int i = 0; i < this->theCombination.size(); i++){
+        (this->theCombination[i])->setTotalCards((this->thePlayers[i])->get_buffer(),(this->theTableCards)->get_buffer());
+        (this->theCombination[i])->decideBestCombination();
+    }
+}
+
+
 
 bool GameState::isEndgame() const{
     bool hehe = false;
     for(int i = 0; i < this->num_of_players; i++) hehe = hehe || ((this->thePlayers[i])->get_the_score() == this->maxScore);
     return hehe;
+}
+
+void GameState::theEnd(){
+    cout << "Permainan berakhir." << endl;
+    cout << "Leaderboard:" << endl;
+    int winner = 0;
+    for(int i = 0; i < this->num_of_players; i++){
+        cout << i+1 << ". Pemain_" << i+1 << ": " << this->thePlayers[i]->get_the_score() << endl;
+        if(this->thePlayers[i]->get_the_score() >= this->maxScore) winner = i+1;
+    }
+
+    cout << "Permainan dimenangkan oleh pemain_" << winner << endl;
+
 }
 
 

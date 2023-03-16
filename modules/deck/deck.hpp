@@ -25,6 +25,7 @@ class Deck{
         int deckSize() const;
 
         GameCard* drawCard();
+        vector<GameCard*> getCards();
 
         void addCard(GameCard*);
         void debug();

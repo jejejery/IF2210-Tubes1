@@ -76,6 +76,9 @@ void Player::setAbility(AbilityCard* ac){
 void Player::setScore(uint64_t sc){
     this->the_score = sc;
 };
+void Player::add_score(uint64_t sc){
+    this->the_score += sc;
+}
 void Player::set_action_name(string an){
     this->action_name = an;
 };
