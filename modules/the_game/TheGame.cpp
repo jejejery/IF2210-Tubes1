@@ -6,10 +6,16 @@ using namespace std;
 TheGame::TheGame(){
     this->gameState = new GameState();
     //Inisiasi actions
+    actions["ABILITYLESS"] = new Abilityless();
     actions["NEXT"] = new Next();
     actions["DOUBLE"] = new Double();
     actions["HALF"] = new Half();
     actions["REVERSE"] = new Reverse();
+    actions["QUARTER"] = new Quarter();
+    actions["QUADRUPLE"] = new Quadruple();
+    actions["REROLL"] = new ReRoll();
+    actions["SWAPCARD"] = new SwapCard();
+    actions["SWITCH"] = new Switch();
     // this->action = new Next();
     // this->gameState = new GameState();
 } //ctor

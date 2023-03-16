@@ -7,6 +7,14 @@
 #include "../action/half.hpp"
 #include "../action/next.hpp"
 #include "../action/reverse.hpp"
+#include "../action/abilityless.hpp"
+#include "../action/quadruple.hpp"
+#include "../action/quarter.hpp"
+#include "../action/reRoll.hpp"
+#include "../action/reverse.hpp"
+#include "../action/swapCard.hpp"
+#include "../action/switch.hpp"
+
 #include "../exception/exception.hpp"
 #include "../exception/commandexception.hpp"
 #include <map>

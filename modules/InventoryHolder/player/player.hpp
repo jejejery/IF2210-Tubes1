@@ -14,6 +14,7 @@ class Player : public InventoryHolder {
     uint16_t player_ID;
     AbilityCard* theAbilityCard;
     bool AbilityState;
+    bool AbilityDisable;
     uint64_t the_score;
     string action_name;
     
@@ -29,18 +30,21 @@ class Player : public InventoryHolder {
     //GETTER, SETTER
     int get_num_of_cards() const override;
 
-    uint8_t get_player_ID() const;
+    uint16_t get_player_ID() const;
     AbilityCard* get_theAbilityCard();
     bool getAbilityState();
+    bool getAbilityDisable();
     uint64_t get_the_score();
     string get_action_name();
     GameCard* get_ith_card(int);
 
     
     void setAbilityState(bool);
+    void setAbilityDisable(bool);
     void setAbility(AbilityCard*);
     void setScore(uint64_t);
     void set_action_name(string);
+    void set_player_card(int,GameCard*);
 
     //Assignment -- Pembanding skor player
     bool operator>(const Player&);
@@ -48,11 +52,11 @@ class Player : public InventoryHolder {
     bool operator==(const Player&);
 
     
-    void operator+(const Player&);
+    void operator+(GameCard*);
     GameCard* operator-();
 
     //Edit card numb
-    void set_player_card(int,GameCard*);
+    
     void add_card(GameCard*);
     void empty_cards();
 

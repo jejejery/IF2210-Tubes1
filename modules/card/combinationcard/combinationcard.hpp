@@ -5,8 +5,8 @@
 #include <functional>
 #include <algorithm>
 #include <utility>
-#include "../card/card.hpp"
-#include "../card/gamecard/gamecard.hpp"
+#include "../card.hpp"
+#include "../gamecard/gamecard.hpp"
 
 
 using namespace std;
@@ -19,7 +19,6 @@ class CombinationCard : public Card {
         int value;
         int constant;
         string type;
-        int* existingNumber; // array of quantitiy of a number
     public:
         CombinationCard();
         CombinationCard(const vector<GameCard*>& playerCards, const vector<GameCard*>& tableCards);
@@ -30,19 +29,20 @@ class CombinationCard : public Card {
         void setType(string);
 
         // return int value of the highest combination
-        int getHighestCombination();
-        GameCard* highCard();
-        vector<Card*> isPair();
-        vector<Card*> isTwoPair();
-        vector<Card*> isThreeKind();
-        vector<Card*> isStraight();
-        vector<Card*> isFlush();
-        vector<Card*> isFullHouse();
-        vector<GameCard*> isFourKind();
-        vector<Card*> isStraightFlush();
+        // int getHighestCombination();
+        // GameCard* highCard();
+        // vector<Card*> isPair();
+        // vector<Card*> isTwoPair();
+        // vector<Card*> isThreeKind();
+        // vector<Card*> isStraight();
+        // vector<Card*> isFlush();
+        // vector<Card*> isFullHouse();
+        // vector<GameCard*> isFourKind();
+        // vector<Card*> isStraightFlush();
 
-        vector<GameCard*> getPlayerCards();
-        vector<GameCard*> getTableCards();
+        // vector<GameCard*> getTableCards();
+        // vector<GameCard*> getPlayerCards();
+        // bool isPlayerCard(GameCard*);
 
         vector<GameCard*> getTotalCards();
 
@@ -51,29 +51,31 @@ class CombinationCard : public Card {
         float searchElement(pair<int, char> );
 
         float searchElement(int, char);
-        double getHighestCombinationType();
+        // double getHighestCombinationType();
 
-        bool operator<(CombinationCard& );
+        // bool operator<(CombinationCard& );
 
-        bool operator>(CombinationCard& );
+        // bool operator>(CombinationCard& );
 
-        bool operator==(CombinationCard& );
+        // bool operator==(CombinationCard& );
 
-        string getOwnerCards() const;
+        // string getOwnerCards() const;
 
         // to compare 
-        CombinationCard compare();
+        // CombinationCard compare();
 
+        static bool compareNumber(GameCard*, GameCard*);
+        static bool compareColor(GameCard*, GameCard*);
         void sortByNumber();
         void sortByNumber(int begin, int size);
         void sortByColor();
 
-        pair<int, int> findLongestColor();
-        pair<int, int> findLongestStraight();
-        pair<int, int> findLongestPair();
+        pair<string, int> getLongestColor();
+        pair<int, int> getLongestStraight();
 
-        void arrNumbers();
-        int* getExistingNumber();
+        static vector<int> existingNumber;
+        // vector<int> getExistingNumber();
+        // int* getExistingNumber();
 
 
 };

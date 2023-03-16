@@ -15,6 +15,7 @@ Deck::Deck()
         cards.push_back(new GameCard(i, "Biru"));
         cards.push_back(new GameCard(i, "Hijau"));
     }
+    this->shuffleDeck();
 }
 
 Deck::Deck(int size)

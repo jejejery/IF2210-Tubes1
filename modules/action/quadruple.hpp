@@ -1,6 +1,8 @@
 #ifndef QUADRUPLE_HPP
 #define QUADRUPLE_HPP
 #include "action.hpp"
+#include "../exception/exception.hpp"
+#include "../exception/commandexception.hpp"
 using namespace std;
 
 class Quadruple : public Action 

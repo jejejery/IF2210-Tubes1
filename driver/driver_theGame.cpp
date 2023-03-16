@@ -26,14 +26,28 @@
 
 //==========ACTION========
 #include "../modules/action/action.hpp"
+
+#include "../modules/action/abilityless.hpp"
 #include "../modules/action/double.hpp"
 #include "../modules/action/half.hpp"
 #include "../modules/action/next.hpp"
+#include "../modules/action/quarter.hpp"
+#include "../modules/action/quadruple.hpp"
 #include "../modules/action/reverse.hpp"
+#include "../modules/action/reRoll.hpp"
+#include "../modules/action/swapCard.hpp"
+#include "../modules/action/switch.hpp"
+
+#include "../modules/action/abilityless.cpp"
 #include "../modules/action/double.cpp"
 #include "../modules/action/half.cpp"
 #include "../modules/action/next.cpp"
+#include "../modules/action/quarter.cpp"
+#include "../modules/action/quadruple.cpp"
 #include "../modules/action/reverse.cpp"
+#include "../modules/action/reRoll.cpp"
+#include "../modules/action/swapCard.cpp"
+#include "../modules/action/switch.cpp"
 
 //theGame
 #include "../modules/the_game/TheGame.hpp"
@@ -44,6 +58,8 @@
 #include "../modules/exception/exception.cpp"
 #include "../modules/exception/commandexception.hpp"
 #include "../modules/exception/commandexception.cpp"
+#include "../modules/exception/IOexception.hpp"
+#include "../modules/exception/IOexception.cpp"
 
 
 #include <iostream>

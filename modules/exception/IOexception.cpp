@@ -5,8 +5,8 @@ int IOexception :: numOfIOException = 0;
 
 string IOexception :: message[] = 
 {
-    "Input angka tidak sesuai",
-    "Indeks angka diluar batas",
+    "Input angka tidak sesuai!",
+    "Indeks angka diluar batas!",
 };
 
 IOexception :: IOexception(int ID) : Exception(ID)

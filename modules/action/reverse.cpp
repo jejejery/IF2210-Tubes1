@@ -1,7 +1,6 @@
 #include "reverse.hpp"
 #include "../gamestate/gamestate.hpp"
-#include "../exception/exception.hpp"
-#include "../exception/commandexception.hpp"
+
 
 #include <iostream>
 
@@ -16,9 +15,13 @@ Reverse :: ~Reverse() {
 }
 
 void Reverse :: execute_action(GameState& game) {
-    AbilityCard* ab = (game.get_current_player())->get_theAbilityCard();
-    if(ab->get_ability() != "REVERSE") throw new CommandException(1); //To Be Implemented
+    Player* pl = (game.get_current_player());
+    AbilityCard* ab = pl->get_theAbilityCard();
+    if(ab->get_ability() != "REVERSE") throw new CommandException(1);
+    if(!pl->getAbilityState()) throw new CommandException(3);
+    if(pl->getAbilityDisable()) throw new CommandException(4);
 
+    pl->setAbilityState(false);
     //Reverse Algorithm:
     int theFront = (game.theQueue)->front();
     cout << "<p" << theFront << "> melakukan reverse!" << endl;

@@ -12,11 +12,13 @@ GameState::GameState(){
     this->isReverse = false;
 
     //inisiasi objek
+    //Inisialisasi dek
     theDeck = new Deck();
 
     theQueue = new myQueue<int>(7);
     for(int i = 0; i < this->num_of_players; i++) thePlayers.push_back(new Player(i+1));
 
+    //inisialisasi player
     for(int i = 1; i <= this->num_of_players; i++) theQueue->enqueue(i);
     for(int i = 0; i < this->num_of_players; i++){
         for(int k = 0; k < 2; k++) {
@@ -97,37 +99,37 @@ void GameState::set_thePlayers(vector<Player*> tp){this->thePlayers = tp;}
 //CombinationCard *theCombination{}
 void GameState::set_theTableCards(TableCard* tc){this->theTableCards = tc;}
 //==============Method==========
-void GameState::next_round(){
-    // this->permainan_ke++;
-    if(this->round == 6) this->next_permainan();
-    else{
-        if(this->round == 2) this->share_ability_cards();
+void GameState::next_round(){      
         this->restore_queue();
         this->round++;
-    }
-    // this->reward = 64;
 
-    //Pindahin seluruh kartu dari tablecard ke dek
-    // this->restore_deck();
-    
-
-
+        //Beggining of new round
+        if(this->round == 2) this->share_ability_cards();
+        if(this->round != 1 && this->round <= 6) (this->theTableCards)->addCard((this->theDeck)->drawCard());
+        if(this->round > 6) this->next_permainan();
     
 }
 
 void GameState::next_permainan(){
-    // this->reward = 64;
-
-    //Pindahin seluruh kartu dari tablecard ke dek
-    // this->restore_deck();
+    cout << "Next Permainan!" << endl;
+    this->reward = 64;
+    this->permainan_ke++;
+    this->round = 1;
+    // Pindahin seluruh kartu dari tablecard ke dek
+    this->restore_deck();
 }
 
  void GameState::restore_deck(){
+
+    //LAKUKAN PENGOSONGAN KARTU DAN KEMBALIKAN KE DEK BESERTA DISABLE ABILITY STATE
     for(int i= 0; i < this->num_of_players; i++){
         for(int h = 0; h < 2; h++) (this->theDeck)->addCard((thePlayers[i])->get_ith_card(h));
         (this->thePlayers[i])->empty_cards();
+        (this->thePlayers[i])->setAbilityState(false);
+        (this->thePlayers[i])->setAbilityDisable(false);
     }
 
+    //KOSONGKAN TABLE CARDS
     while((this->theTableCards)->get_capacity() > 0){
         (this->theDeck)->addCard((this->theTableCards)->drawCard());
     } 
@@ -155,7 +157,7 @@ void GameState::restore_queue(){
 void GameState::share_ability_cards(){
     
     srand(time(0));
-
+    
     // Inisiasi LCG
     int a = 11, c = 8, k = this->theAbilities.size();
     int x = rand() % k;
@@ -168,8 +170,10 @@ void GameState::share_ability_cards(){
 
     for(int i = 0; i < k; i++){
         (this->thePlayers[i])->setAbility(this->theAbilities[i]);
+        (this->thePlayers[i])->setAbilityState(true);
     }
 }
+
 
 bool GameState::isEndgame() const{
     bool hehe = false;
@@ -177,10 +181,6 @@ bool GameState::isEndgame() const{
     return hehe;
 }
 
-void GameState::calculate_winner(){}
-
-
-void GameState::run_game(){}
 
 void GameState::debug(){
     cout << "==================================================" << endl;

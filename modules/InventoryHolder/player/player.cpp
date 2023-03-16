@@ -17,6 +17,7 @@ Player::Player(uint16_t ID):InventoryHolder(2){
     this->player_ID = ID;
     this->theAbilityCard = new AbilityCard();
     this->AbilityState = false;
+    this->AbilityDisable = false;
     this->the_score = 0;
     this->action_name = "NONE";
 };
@@ -33,7 +34,7 @@ Player::~Player(){
 }; //dtor
 
 //GETTER, SETTER
-uint8_t Player::get_player_ID() const{
+uint16_t Player::get_player_ID() const{
     return this->player_ID;
 };
 
@@ -47,6 +48,11 @@ AbilityCard* Player::get_theAbilityCard(){
 bool Player::getAbilityState(){
     return this->AbilityState;
 };
+
+bool Player::getAbilityDisable(){
+    return this->AbilityDisable;
+}
+
 uint64_t Player::get_the_score(){
     return this->the_score;
 };
@@ -59,6 +65,10 @@ GameCard* Player::get_ith_card(int i){
 }
 void Player::setAbilityState(bool b){
     this->AbilityState = b;
+};
+
+void Player::setAbilityDisable(bool b){
+    this->AbilityDisable = b;
 };
 void Player::setAbility(AbilityCard* ac){
     this->theAbilityCard = ac;
@@ -113,4 +123,6 @@ void Player::debug(){
     cout << "Ability Card: " << *(this->theAbilityCard) << endl;
     cout << "Skor Player: " << this->the_score << endl;
     cout << "Aksi: " << this->action_name << endl;
+    cout << "Ability State: " << this->AbilityState << endl;
+    cout << "Ability Disable: " << this->AbilityDisable << endl;
 }

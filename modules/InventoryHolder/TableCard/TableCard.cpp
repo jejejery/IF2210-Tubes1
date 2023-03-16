@@ -30,11 +30,13 @@ GameCard* TableCard::drawCard()
     
     GameCard* drawn = this->cardbuffer.front();
     this->cardbuffer.erase(this->cardbuffer.begin());
+    this->capacity--;
     return drawn;
 }
 
 void TableCard::debug(){
     if(this->capacity){
+        cout << "Kapasitas: " << this->capacity << endl;
         for(int i = 0; i < this->capacity; i++) cout << *(this->cardbuffer[i]) << endl;
     }
     else{

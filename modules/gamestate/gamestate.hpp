@@ -68,7 +68,7 @@ class GameState{
 
     //SETTER GETTER
 
-    //==============SETTER=============
+    //==============GETTER=============
     int get_permainan_ke() const;
     int get_round() const;
     uint64_t get_reward() const;
@@ -79,8 +79,9 @@ class GameState{
     //CombinationCard *theCombination;
     TableCard* get_theTableCards() const;
     Player* get_current_player() const;
+    //CombinationCard *theCombination() const;
 
-    //==============GETTER=============
+    //==============SETTER=============
     void set_permainan_ke(int);
     void set_round(int);
     void set_reward(uint64_t);
@@ -88,7 +89,7 @@ class GameState{
     void set_theDeck(Deck*);
     void set_theQueue(myQueue<int>*);
     void set_thePlayers(vector<Player*>);
-    //CombinationCard *theCombination;
+    
     void set_theTableCards(TableCard*);
 
 
@@ -101,11 +102,7 @@ class GameState{
 
     void share_ability_cards();
 
-
     bool isEndgame() const;
-    void calculate_winner();
-    void run_game();
-
     void debug();
 
 
